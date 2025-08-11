@@ -1,14 +1,36 @@
 import { Button } from "./components/ui/button";
 import { Input } from "./components/ui/input";
 
+interface Root {
+  Search: Search[];
+  totalResults: string;
+  Response: string;
+}
+
+interface Search {
+  Title: string;
+  Year: string;
+  imdbID: string;
+  Type: string;
+  Poster: string;
+}
+
 function App() {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const url = `http://www.omdbapi.com/?apikey=${
+      import.meta.env.VITE_APIKEY
+    }&s=${"TITLE"}`;
+    //Écrire la fonction pour rechercher des films par titre
+  };
+
   return (
     <main className="bg-gray-50">
       <div className="container mx-auto p-4 min-h-screen">
         <h1 className="text-2xl font-bold text-center mb-4">
           Bienvenue sur Movie API
         </h1>
-        <form className="flex gap-x-4">
+        <form onSubmit={handleSubmit} className="flex gap-x-4">
           <Input type="text" placeholder="Rechercher un film..." />
           <Button type="submit">Rechercher</Button>
         </form>
@@ -22,34 +44,10 @@ function App() {
               Search) et l'appliquer au clic du bouton "Rechercher"
             </li>
             <li>
-              Écrire les types typescript correspondant à la réponse de l'API
-              "Search" & "By ID or Title"
-            </li>
-            <li>
               Créer un composant pour afficher une liste de films (titre, année
               de sortie & image)
             </li>
-            <li className="mb-4">
-              Afficher un loader lors du chargement des données
-            </li>
-            <li>
-              Écrire la fonction pour rechercher les détails d'un film par ID
-              (API By ID)
-            </li>
-            <li>
-              Créer un composant pour afficher les détails d'un film. Afficher
-              ce composant au sein d'une modal (utiliser le composant Dialog de
-              shadcn) qui s'ouvrira au clic sur un film de la liste
-            </li>
-            <li className="mb-4">
-              Afficher un loader lors du chargement de cette données
-            </li>
-            <li>
-              Ajouter un évènement sur l'input "Rechercher un film..." pour
-              déclancher la recherche lorsque l'utilisateur tape le nom d'un
-              film. Comment peut-on optimiser cette recherche pour éviter de
-              faire trop de requêtes à l'API ?
-            </li>
+            <li>Afficher un loader lors du chargement des données</li>
           </ul>
         </div>
         <div>
@@ -65,20 +63,21 @@ function App() {
                 Documentation API
               </a>
             </li>
-            <li>
-              <a
-                className="text-blue-500 hover:underline"
-                href="https://ui.shadcn.com/docs/components/dialog"
-                target="_blank"
-              >
-                Documentation Dialog de shadcn
-              </a>
-            </li>
           </ul>
         </div>
       </div>
     </main>
   );
+}
+
+function MovieList() {
+  // Créer un composant pour afficher une liste de films
+  return <div>{/* Implémentation de la liste de films */}</div>;
+}
+
+function Movie() {
+  // Créer un composant pour afficher les détails d'un film
+  return <div>{/* Implémentation des détails du film */}</div>;
 }
 
 export default App;
