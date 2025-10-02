@@ -1,3 +1,4 @@
+import React from "react";
 import { Button } from "./components/ui/button";
 import { Input } from "./components/ui/input";
 
@@ -16,6 +17,8 @@ interface Search {
 }
 
 function App() {
+  const [data, setData] = React.useState<Search[]>([]);
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const url = `http://www.omdbapi.com/?apikey=${
