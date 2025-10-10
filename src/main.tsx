@@ -56,7 +56,7 @@ function Demo() {
   };
 
   return (
-    <main className="bg-gray-100">
+    <main className="bg-gray-100 hidden">
       <div className="container mx-auto p-4 min-h-screen">
         <h1 className="text-2xl font-bold text-center mb-4">
           Bienvenue sur Movie API
